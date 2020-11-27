@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fancy button generator</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src = "app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <main>
+        <div class = "output">
+            <button class = "mybtn">Button</button>
+        </div>
+        <div class="controls">
+            <div class = "slider-div">
+                <span class="small">After changing button properties, scroll down and click "Generate CSS"</span>
+            </div>
+            <div class="slider-div">
+                <label for="padding">Padding Y</label>
+                <input name="padding" type="range" min="0" max="30" value="10" class="slider padding">
+                <span class = "range padding">10px</span>
+            </div>
+            
+            <div class="slider-div">
+                <label for="paddingx">Padding X</label>
+                <input name="paddingx" type="range" min="0" max="30" value="10" class="slider paddingx">
+                <span class = "range paddingx">10px</span>
+            </div>
+
+            <div class="slider-div">
+                <label for="radius">Border radius</label>
+                <input name="radius" type="range" min="0" max="50" value="0" class="slider radius">
+                <span class = "range radius">0px</span>
+            </div>
+
+            <div class="slider-div">
+                <label for="bwidth">Border width</label>
+                <input name="bwidth" type="range" min="1" max="10" value="1" class="slider bwidth">
+                <span class = "range bwidth">1px</span>
+            </div>
+
+            <div class="slider-div">
+                <label for="border">Show border</label>
+                <select name="border" class="border">
+                    <option value="none">None</option>
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                </select>
+                <div></div>
+            </div>
+            
+            <div class="slider-div">
+                <label for="textcolor">Text color</label>
+                <input name="textcolor" type="color" class="textcolor">
+                <span class = "range colorlabel">#000000</span>
+            </div>
+
+            <div class="slider-div">
+                <label for="bgcolor">Background</label>
+                <input name="bgcolor" type="color" class="bgcolor" value = "#EFEFEF">
+                <span class = "range bgcolorlabel">#EFEFEF</span>
+            </div>
+            
+             <div class="slider-div">
+                <label for="bcolor">Border color</label>
+                <input name="bcolor" type="color" class="bcolor" value = "#000000">
+                <span class = "range bcolorlabel">#000000</span>
+            </div>
+
+
+            <div class="buttoncontainer">
+                <button class = "generate">Generate CSS</button>
+            </div>
+        </div>
+        <div class = "popup">
+            <h2>Here is CSS code for your button:</h2>
+            <textarea>
+            button {
+                border: 1px;
+            }
+            </textarea>
+            <div class = "popup-btns">
+                <button class = "close">Close</button>
+                 <button class = "copy">Copy code</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
