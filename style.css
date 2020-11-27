@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    font-size: 10px;
+    /* To make REMs usage easier*/
+}
+
+body {
+    overflow: hidden;
+}
+
+main {
+    height: 100vh;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 10px;
+  border-radius: 10px;  
+  background: #ddd;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #00B3FF;
+  cursor: pointer;
+
+}
+
+label {
+    font-size: 1.4rem;
+    display: inline;
+    width: 20%;
+}
+
+.range {
+    font-size: 1.4rem;
+}
+
+
+.output {
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    height: 60%;
+    overflow: scroll;
+}
+
+
+.slider-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px; 
+}
+
+
+
+.mybtn {
+    padding: 10px 10px;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background: #EFEFEF;
+    border-radius: 0px;
+    outline: none;
+}
+
+
+.bcolor, .bgcolor, .textcolor {
+    border: none;
+    background: #eeeeee;
+    padding: 1px;
+    border-radius: 5px;
+}
+
+.buttoncontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.generate {
+    margin: auto;
+    padding: 20px 20px;
+    color: #ffffff;
+    border: 1px none #000000;
+    background: #7cbf00;
+    border-radius: 0px;
+    outline: none;
+    width: 100%;
+}
+
+
+
+.popup {
+    display: flex;
+    position: absolute;
+    top: -110%;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #ffffff;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    transition: top 1s ease-in-out;
+    box-shadow: 2px 2px 5px 5px #555;
+}
+
+.popup.open {
+    transition: top 1s ease-in-out;
+    top: 0;
+}
+
+.popup textarea {
+    height: 50%;
+    border: none;
+}
+
+.copy {
+    padding: 10px 0px;
+    color: #ffffff;
+    border: 1px none #000000;
+    background: #10b6e8;
+    border-radius: 0px;
+    outline: none;
+    width: 40%;
+}
+
+.close {
+    padding: 10px 0px;
+    color: #ffffff;
+    border: 1px none #ff0000;
+    background: #f03c23;
+    border-radius: 0px;
+    outline: none;
+    width: 40%;
+}
+
+.popup-btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+                
+.popup h2 {
+    font-size: 3rem;
+}
+                
+.small {
+    font-size: 1.2rem;
+}
+            
