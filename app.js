@@ -1,100 +1,97 @@
-let right = 0;
-let wrong = 0;
-
 window.addEventListener("load", () => {
-    document.querySelector(".next").addEventListener("click", () => {
-        startGame();
+    let mybtn = document.querySelector(".mybtn");
+
+    let padding_slider = document.querySelector(".slider.padding");
+    let padding_range = document.querySelector(".range.padding");
+    padding_slider.addEventListener("input", () => {
+        padding_range.innerText = `${padding_slider.value}px`;
+        mybtn.style.padding = `${padding_slider.value}px ${paddingx_slider.value}px`;
     })
-     document.querySelector(".start").addEventListener("click", () => {
-        startGame();
+
+    let paddingx_slider = document.querySelector(".slider.paddingx");
+    let paddingx_range = document.querySelector(".range.paddingx");
+    paddingx_slider.addEventListener("input", () => {
+        paddingx_range.innerText = `${paddingx_slider.value}px`;
+        mybtn.style.padding = `${padding_slider.value}px ${paddingx_slider.value}px`;
     })
+
+    let radius_slider = document.querySelector(".slider.radius");
+    let radius_range = document.querySelector(".range.radius");
+    radius_slider.addEventListener("input", () => {
+        radius_range.innerText = `${radius_slider.value}px`;
+        mybtn.style.borderRadius =  `${radius_slider.value}px`;
+    })
+
+    let bwidth_slider = document.querySelector(".slider.bwidth");
+    let bwidth_range = document.querySelector(".range.bwidth");
+    bwidth_slider.addEventListener("input", () => {
+        bwidth_range.innerText = `${bwidth_slider.value}px`;
+        mybtn.style.borderWidth =  `${bwidth_slider.value}px`;
+    })
+
+
+
+    let sborder = document.querySelector(".border");
+    sborder.value = "solid";
+    sborder.addEventListener("input", () => {
+        
+        mybtn.style.borderStyle =  `${sborder.value}`;
+    })
+
+    let tcolor = document.querySelector(".textcolor");
+    let color_label = document.querySelector(".colorlabel")
+    tcolor.addEventListener("input", () => {
+        color_label.innerText = `${tcolor.value}`;
+        mybtn.style.color =  `${tcolor.value}`;
+    })
+
+
+    let bgcolor = document.querySelector(".bgcolor");
+    let bgcolor_label = document.querySelector(".bgcolorlabel")
+    bgcolor.addEventListener("input", () => {
+        bgcolor_label.innerText = `${bgcolor.value}`;
+        mybtn.style.background = `${bgcolor.value}`;
+    })
+    
+    
+    let bcolor = document.querySelector(".bcolor");
+    let bcolor_label = document.querySelector(".bcolorlabel")
+    bcolor.addEventListener("input", () => {
+        bcolor_label.innerText = `${bcolor.value}`;
+        mybtn.style.borderColor = `${bcolor.value}`;
+    })
+    
+    let generare_btn = document.querySelector(".generate")
+    generare_btn.addEventListener("click", () => {
+       
+       let padding = `${padding_slider.value}px ${paddingx_slider.value}px`;
+       let color = `${tcolor.value}`;
+       let border = `${bwidth_slider.value}px ${sborder.value} ${bcolor.value}`
+       let bg = `${bgcolor.value}`
+       let borderradius = `${radius_slider.value}px`
+        document.querySelector(".popup").classList.toggle("open")
+        document.querySelector(".popup textarea").value = `button {\n    padding: ${padding};\n    color: ${color};\n    border: ${border};\n    background: ${bg};\n    border-radius: ${borderradius};\n    outline: none;\n}`
+        
+        
+        
+    })
+    
+    let copybtn = document.querySelector(".copy")
+    
+    copybtn.addEventListener("click", () => {
+        document.querySelector(".popup textarea").select();
+    document.querySelector(".popup textarea").setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    alert("Copied!")
+       
+    })
+    
+    let closebtn = document.querySelector(".close")
+    closebtn.addEventListener("click", () => {
+        document.querySelector(".popup").classList.toggle("open")
+    })
+    
 })
 
 
 
-const startGame = () => {
-    closeMenu();
-    document.querySelector(".colors-container").style.pointerEvents = "all";
-    document.querySelector(".color-code").style.color = "#000000";
-    document.querySelector(".notification").classList.remove("open")
-    let colors_container = document.querySelector(".colors-container");
-    let color_name = document.querySelector(".color-code");
-    
-    colors_container.innerHTML = '';
-    correct_color = random_color();
-    color_name.innerText = correct_color;
-    
-    
-    let colors_array = new Array;
-    for (let i = 0; i < 5; i++){
-        let tile = createTile(0)
-        tile.addEventListener("click", () => {
-            showNotification(0, correct_color, correct_tile)
-        })
-            
-        
-        colors_array[i] = tile;
-    }
-    
-    correct_tile = createTile(correct_color)
-    correct_tile.addEventListener("click", () => {
-            
-            showNotification(1, correct_color, correct_tile)
-            
-            })
-    colors_array[5] = correct_tile;
-    
-    colors_array = colors_array.sort(() => Math.random()*Math.random()-Math.random()*Math.random());
-    
-    for (let i = 0; i < 6; i++){
-        colors_container.appendChild(colors_array[i])
-    }
-}
-
-
-const random_color = () => {
-    return `rgb(${Math.round(Math.random()*255)}, ${Math.round(Math.random()*255)}, ${Math.round(Math.random()*255)})`;
-}
-
-const createTile = (color) => {
-    let tile = document.createElement("div");
-    tile.classList.add("tile");
-    if (color === 0){
-        tile.style.background = `${random_color()}`;
-    } else {
-        tile.style.background = color;
-    }
-    
-    return tile;
-}
-
-
-const showNotification = (isCorrect, revealColor, correct_tile) => {
-document.querySelector(".colors-container").style.pointerEvents = "none";
-    let descript = document.querySelector(".descript")
-    let next = document.querySelector(".next") 
-    let notification = document.querySelector(".notification");
-    notification.classList.add("open");
-    document.querySelector(".color-code").style.color = revealColor;
-    correct_tile.style.transform = "scale(0.9)";
-    correct_tile.style.transition = "transform 0.2s ease"
-    if (isCorrect) {
-        notification.style.background = `rgb(67, 162, 30)`
-        next.style.background = `transparent`
-        descript.innerText = "Correct!"
-        right++;
-        document.querySelector(".correct").innerText="Correct: "+right;
-        
-    } else {
-        notification.style.background = `rgb(249,  52, 59)`
-        next.style.background = `transparent`
-        descript.innerText = "Wrong"
-        wrong++
-        document.querySelector(".wrong").innerText="Wrong: "+wrong;
-    }
-}
-
-const closeMenu = () => {
-    document.querySelector(".introduction").classList.remove("open");
-    
-}
